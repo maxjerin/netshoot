@@ -77,9 +77,24 @@ get_fortio() {
   chmod +x /tmp/fortio
 }
 
+get_dive() {
+  if [ "$ARCH" == "amd64" ]; then
+    TERM_ARCH=x86_64
+  else
+    TERM_ARCH="$ARCH"
+  fi
+  VERSION=$(get_latest_release wagoodman/dive | sed -e 's/^v//')
+  LINK="https://github.com/wagoodman/dive/releases/download/v${VERSION}/dive_${VERSION}_linux_${ARCH}.tar.gz"
+  wget "$LINK" -O /tmp/dive.tar.gz  && \
+  pwd && \
+  tar -zxvf /tmp/dive.tar.gz && \
+  ls -latr /home && \
+  chmod +x /tmp/dive
+}
 
-get_ctop
-get_calicoctl
-get_termshark
-get_grpcurl
-get_fortio
+# get_ctop
+# get_calicoctl
+# get_termshark
+# get_grpcurl
+# get_fortio
+get_dive

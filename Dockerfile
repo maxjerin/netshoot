@@ -78,6 +78,9 @@ COPY --from=fetcher /tmp/ctop /usr/local/bin/ctop
 # Installing calicoctl
 COPY --from=fetcher /tmp/calicoctl /usr/local/bin/calicoctl
 
+# Installing dive
+COPY --from=fetcher /tmp/dive /usr/local/bin/dive
+
 # Installing termshark
 COPY --from=fetcher /tmp/termshark /usr/local/bin/termshark
 
